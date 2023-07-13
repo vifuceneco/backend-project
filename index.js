@@ -86,6 +86,8 @@ module.exports = ProductManager;
 
 const manager = new ProductManager('products.json');
 
+console.log('Primera instancia de los productos: ', manager.getProducts());
+
 manager.addProduct({
   title: 'Producto prueba',
   description: 'Este es un producto prueba',
@@ -132,3 +134,4 @@ try {
 } catch (error) {
   console.error(error.message);
 }
+
