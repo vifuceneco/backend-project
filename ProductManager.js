@@ -6,6 +6,7 @@ class ProductManager {
     this.id = 1;
     this.path = path;
     this.loadProducts();
+    this.productsLoaded = false;
   }
 
   loadProducts() {
@@ -13,8 +14,8 @@ class ProductManager {
       const data = fs.readFileSync(this.path, 'UTF-8');
       if (data) {
         this.products = JSON.parse(data);
-        this.id = this.products.length + 1;
       }
+      this.productsLoaded = true;
     } catch (error) {
       console.log('Error cargando productos:', error.message);
     }
@@ -106,6 +107,15 @@ manager.addProduct({
   thumbnail: 'Sin imagen',
   code: 'abc456',
   stock: 48,
+});
+
+manager.addProduct({
+  title: 'Tercer producto prueba',
+  description: 'Este es el tercer producto prueba',
+  price: '$700',
+  thumbnail: 'Sin imagen',
+  code: 'abc789',
+  stock: 15,
 });
 
 console.log('Los productos parte 2 son: ', manager.getProducts());
