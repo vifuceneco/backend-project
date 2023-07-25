@@ -78,4 +78,21 @@ router.put('/:pid', (req, res) => {
   res.json(updatedProduct);
 });
 
+router.delete('/:pid', (req, res) => {
+  const productId = parseInt(req.params.pid);
+  const products = loadProducts();
+  const productToDelete = products.find((product) => product.id === productId);
+
+  if (!productToDelete) {
+    return res.status(404).json({ error: 'Producto no encontrado' });
+  }
+
+  const productIndex = products.findIndex((product) => product.id === productId);
+
+  products.splice(productIndex, 1);
+
+  saveProducts(products);
+  res.json({ message: 'Producto eliminado'})
+})
+
 module.exports = router;
