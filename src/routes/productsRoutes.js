@@ -15,19 +15,8 @@ const getProductById = (id) => {
   return productById;
 }
 
-const addProduct = (product) => {
-  if (!product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock) {
-    console.error('Todos los campos son obligatorios');
-    return;
-  }
-  const existingProduct = products.find((p) => p.code === product.code);
-  if (existingProduct) {
-    console.error('Ya existe un producto con el mismo código');
-    return;
-  }
-  const newProductId = products[products.length - 1].id + 1;
-  product.id = newProductId;
-  products.push(product);
+const saveProducts = (products) => {
+  fs.writeFileSync('data/products.json', JSON.stringify(products, null, 2), 'utf-8');
 };
 
 router.get('/', (req, res) => {
@@ -42,6 +31,29 @@ router.get('/:pid', (req, res) => {
   const productId = parseInt(req.params.pid);
   const productById = getProductById(productId);
   res.json(productById);
+});
+
+router.post('/', (req, res) => {
+  const product = req.body;
+  if (!product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock) {
+    return res.status(400).json({ error: 'Todos los campos son obligatorios' });
+  }
+
+  const products = loadProducts();
+  const existingProduct = products.find((p) => p.code === product.code);
+  if (existingProduct) {
+    return res.status(400).json({ error: 'Ya existe un producto con el mismo código' });;
+  }
+
+  const newProductId = products[products.length - 1].id + 1;
+  const newProduct = {
+    id: newProductId,
+    ...req.body,
+  }
+
+  products.push(newProduct);
+  saveProducts(products);
+  res.json(newProduct);
 });
 
 module.exports = router;
