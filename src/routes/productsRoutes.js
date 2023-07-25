@@ -56,4 +56,26 @@ router.post('/', (req, res) => {
   res.json(newProduct);
 });
 
+router.put('/:pid', (req, res) => {
+  const productId = parseInt(req.params.pid);
+  const products = loadProducts();
+  const productToUpdate = products.find((product) => product.id === productId);
+
+  if (!productToUpdate) {
+    return res.status(404).json({ error: 'Producto no encontrado' });
+  }
+
+  const updatedProduct = {
+    ...productToUpdate,
+    ...req.body,
+    id: productId,
+  };
+
+  const productIndex = products.findIndex((product) => product.id === productId);
+
+  products[productIndex] = updatedProduct;
+  saveProducts(products);
+  res.json(updatedProduct);
+});
+
 module.exports = router;
