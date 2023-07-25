@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "Camiseta",
+    "description": "Una camiseta de algodón de manga corta",
+    "code": "TS001",
+    "price": 20.99,
+    "status": true,
+    "stock": 50,
+    "category": "Ropa",
+    "thumbnails": ["url_imagen1.jpg", "url_imagen2.jpg"]
+  },
+  {
+    "id": 2,
+    "title": "Pantalón",
+    "description": "Un pantalón vaquero para hombres",
+    "code": "PN002",
+    "price": 35.50,
+    "status": true,
+    "stock": 30,
+    "category": "Ropa",
+    "thumbnails": ["url_imagen3.jpg", "url_imagen4.jpg"]
+  },
+  {
+    "id": 3,
+    "title": "Zapatillas deportivas",
+    "description": "Zapatillas cómodas y duraderas para correr",
+    "code": "ZP003",
+    "price": 80.75,
+    "status": true,
+    "stock": 20,
+    "category": "Calzado",
+    "thumbnails": ["url_imagen5.jpg", "url_imagen6.jpg"]
+  }
+]
