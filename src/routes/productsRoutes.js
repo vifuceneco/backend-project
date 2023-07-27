@@ -16,7 +16,7 @@ const getProductById = (id) => {
 }
 
 const saveProducts = (products) => {
-  fs.writeFileSync('data/products.json', JSON.stringify(products, null, 2), 'utf-8');
+  fs.writeFileSync('data/products.json', JSON.stringify(products, null, 2), 'UTF-8');
 };
 
 router.get('/', (req, res) => {
@@ -24,13 +24,13 @@ router.get('/', (req, res) => {
   const limit = req.query.limit;
 
   const limitedProducts = limit ? products.slice(0, limit) : products;
-  res.json(limitedProducts);
+  res.status(201).json(limitedProducts);
 });
 
 router.get('/:pid', (req, res) => {
   const productId = parseInt(req.params.pid);
   const productById = getProductById(productId);
-  res.json(productById);
+  res.status(201).json(productById);
 });
 
 router.post('/', (req, res) => {
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
 
   products.push(newProduct);
   saveProducts(products);
-  res.json(newProduct);
+  res.status(201).json(newProduct);
 });
 
 router.put('/:pid', (req, res) => {
@@ -75,7 +75,7 @@ router.put('/:pid', (req, res) => {
 
   products[productIndex] = updatedProduct;
   saveProducts(products);
-  res.json(updatedProduct);
+  res.status(201).json(updatedProduct);
 });
 
 router.delete('/:pid', (req, res) => {
@@ -92,7 +92,7 @@ router.delete('/:pid', (req, res) => {
   products.splice(productIndex, 1);
 
   saveProducts(products);
-  res.json({ message: 'Producto eliminado'})
+  res.status(201).json({ message: 'Producto eliminado'})
 })
 
 module.exports = router;

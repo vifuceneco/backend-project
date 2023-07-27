@@ -8,18 +8,24 @@
     "status": true,
     "stock": 50,
     "category": "Ropa",
-    "thumbnails": ["url_imagen1.jpg", "url_imagen2.jpg"]
+    "thumbnails": [
+      "url_imagen1.jpg",
+      "url_imagen2.jpg"
+    ]
   },
   {
     "id": 2,
     "title": "Pantalón",
     "description": "Un pantalón vaquero para hombres",
     "code": "PN002",
-    "price": 35.50,
+    "price": 35.5,
     "status": true,
     "stock": 30,
     "category": "Ropa",
-    "thumbnails": ["url_imagen3.jpg", "url_imagen4.jpg"]
+    "thumbnails": [
+      "url_imagen3.jpg",
+      "url_imagen4.jpg"
+    ]
   },
   {
     "id": 3,
@@ -30,6 +36,9 @@
     "status": true,
     "stock": 20,
     "category": "Calzado",
-    "thumbnails": ["url_imagen5.jpg", "url_imagen6.jpg"]
+    "thumbnails": [
+      "url_imagen5.jpg",
+      "url_imagen6.jpg"
+    ]
   }
 ]
