@@ -56,7 +56,7 @@ router.post('/:cid/product/:pid', (req, res) => {
   };
 
   const existingProduct = cartById.products.findIndex((p) => p.id === productId);
-  if (existingProduct !== -1) {
+  if (existingProduct) {
     cartById.products[existingProduct].quantity += productToAdd.quantity;
   } else {
     cartById.products.push(productToAdd);
