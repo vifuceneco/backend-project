@@ -47,7 +47,7 @@ router.post('/:cid/product/:pid', (req, res) => {
   const cartById = carts.find((cart) => cart.id.toString() === cartId);
 
   if (!cartById) {
-    return res.status(404).json({ error: 'Cart not found' });
+    return res.status(404).json({ error: 'Carrito no encontrado' });
   }
 
   const productToAdd = {
